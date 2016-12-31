@@ -1,0 +1,6 @@
+name: CreeperCraft
+version: 1.0
+author: drcreator15
+main: org.creepercraft.plugin.CreeperCraft
+description: A plugin that modifies a players display name to include the players group prefix.
+depend: [PermissionsEx]

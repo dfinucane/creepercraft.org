@@ -8,7 +8,12 @@ set -x
 shopt -s nullglob
 
 #install java
-#install git?
+#wget --quiet --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jre-8u111-linux-x64.tar.gz
+#tar -xvf jre-8u111-linux-x64.tar.gz
+#install git
+#sudo apt-get install git -y
+#install xpath to parse XML
+#sudo apt-get install libxml-xpath-perl
 #install mysql
 #sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5
 #echo "deb http://repo.mysql.com/apt/ubuntu/ trusty mysql-5.7" >> /etc/apt/sources.list.d/mysql.list
@@ -17,6 +22,16 @@ shopt -s nullglob
 #sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password bla'
 #sudo apt-get -y install mysql-server
 #sudo apt-get install mysql-server -y
+
+#get latest bungeecord build number
+#wget http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/api/xml --output-document=latest-build.xml
+#xpath -q -e '//number/text()' latest-build.xml
+
+#wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/api/xml --output-document=latest-build.xml
+#xpath -q -e '//number/text()' latest-build.xml
+
+#wget https://hub.spigotmc.org/jenkins/job/Spigot-Essentials/lastSuccessfulBuild/api/xml --output-document=latest-build.xml
+#xpath -q -e '//number/text()' latest-build.xml
 
 bungeecord_directory_name="bungeecord"
 buildtools_directory_name="buildtools"
@@ -51,7 +66,7 @@ function copy_plugins()
 {
     declare -A plugin_urls
     plugin_urls=(['PermissionsEx.jar']='https://dev.bukkit.org/projects/permissionsex/files/909154/download'
-    ['Essentials.jar']='https://dev.bukkit.org/projects/essentials/files/780922/download' )
+    ['Essentials.jar']='https://dev.bukkit.org/projects/essentials/files/780922/download')
     mkdir -p artifacts/${plugin_directory_name}/
     for plugin_name in ${!plugin_urls[*]}; do
         wget ${plugin_urls[$plugin_name]} --output-document=artifacts/${plugin_directory_name}/${plugin_name}
