@@ -1,0 +1,10 @@
+name: Apocalypse
+version: 1.0
+author: HankIsDankYT
+main: org.creepercraft.apocalypse.Apocalypse
+description: Apocalypse.
+depend: 
+commands:
+    pauseevil:
+    resumeevil:
+    
